@@ -1,0 +1,167 @@
+Log into AWS
+
+- Copy URL in downloaded "credentials.csv" to clipboard
+- Paste URL into browser
+- Click the Enter key
+- Copy user name from downloaded "credentials.csv" to clipboard
+- Paste user name into "IAM user name" field in web page
+- Paste password into "Password" field in web page
+- Click "Sign In" button
+
+Create Hello, World Lambda function
+
+- Click "Services" in the top left corner
+- Click "Lambda" under "Compute"
+- Click "Create function" button in upper right corner
+- Set "Function name" to "myHelloWorldLambdaFunc"
+- Click the "Create function" button in the lower right corner
+- Click the down arrow in the "Select a test event" field in the upper right corner. A popup menu will appear.
+- Select "Configure test events"
+- Set "Event name" to "MyHelloWorldLambdaEvent"
+- Click the "Create" button at the bottom
+- Click the "Test" button in the upper right corner
+- Verify that the "Execution result: succeeded" message appears on the left
+- Click the "Details" link on the left
+- Verify that the following JSON appears:
+  {
+    "statusCode": 200,
+    "body": "\"Hello from Lambda!\""
+  }
+- Scroll down until the "Add trigger" button appears on the left
+- Click the "Add trigger" button
+- Set "Trigger configuration" to "API Gateway"
+- Set "Security" to "Open"
+- Click the "Add" button at the bottom
+- Scroll down to the API Gateway information at the bottom
+- Right-click the "API endpoint" link at the bottom and select "Open link in new tab"
+- Verify that "Hello from Lambda!" appears (including the quotes) in new browser tab
+- Close the new browser tab
+
+Modify Hello, World Lambda function
+
+- Scroll up until the "myHelloWorldLambdaFunc" and "Layers" buttons appear in the center
+- Click the "myHelloWorldLambdaFunc" button in the center
+- Scroll down to the source code for index.js
+- Change 'Hello from Lambda!' to 'Hola from Lambda!'
+- Click the "Save" button in the upper right corner
+- Click the "Test" button in the upper right corner
+- Scroll up to the execution test results
+- Verify that the "Execution result: succeeded" message appears on the left
+- Click the "Details" link on the left
+- Verify that the following JSON appears:
+  {
+    "statusCode": 200,
+    "body": "\"Hola from Lambda!\""
+  }
+- Scroll down to the API Gateway button
+- Click the API Gateway button
+- Scroll down to the API Gateway information at the bottom
+- Right-click the "API endpoint" link at the bottom and select "Open link in new tab"
+- Verify that "Hola from Lambda!" appears (including the quotes) in new browser tab
+- Close the new browser tab
+
+Create DynamoDB table
+
+- Click "Services" in the top left corner
+- Click "DynamoDB" under "Database"
+- Click the "Create table" button in the center
+- Set "Table name" in the center to "MonthlyRollup"
+- Set "Primary key" in the center to "dttmCreated"
+- Click the "Create" button at the bottom
+- Click the "Items" tab at the top
+- Click the "Create item" button at the top
+- Set "dttmCreated" to "2019-01-02 00:15:00"
+- Click the "+" icon to the left of dttmCreated. A popup menu will appear.
+- Select Append. A popup menu will appear.
+- Select "String". An additional field with no name or value will appear.
+- Set the name of the new field to "nbrSvcr"
+- Set the value of the new field to "000000"
+- Click the "+" icon to the left of nbrSvcr. A popup menu will appear.
+- Select Append. A popup menu will appear.
+- Select "Number". An additional field with no name or value will appear.
+- Set the name of the new field to "amtPrincipal"
+- Set the value of the new field to "1"
+- Append a new field of type "Number" named "amtInterest" set to "2"
+- Append a new field of type "Number" named "amtAdjustments" set to "3"
+- Append a new field of type "Number" named "amtPayoffs" set to "4"
+- Append a new field of type "Number" named "amtPriorPrincipal" set to "5"
+- Verify that a row appears reading "2019-01-02 00:15:00  3  2  4  1  5  000000"
+
+Create DynamoDB Lambda function
+
+- Click "Services" in the top left corner
+- Click "Lambda" under "Compute"
+- Click "Create function" button in upper right corner
+- Click the "Use a blueprint" button in the center
+- Click the "5" link in the upper right corner
+- Click the "microservice-http-endpoint-python" card in the center
+- Click the "Configure" button in the lower right corner
+- Set "Function name" to "myAPITriggeredDBWriterLambdaFunc"
+- Scroll down until the "Create function" button appears at the bottom
+- Click the "Create function" button. An error message will appear.
+- Set "Role name" to "myAPITriggeredDBWriterLambdaRole"
+- Scroll down until the "Create function" button appears at the bottom
+- Click the "Create function" button. An error message will appear.
+- Scroll down until the "API Gateway trigger" section appears
+- Set "API" to "Create a new API"
+- Scroll down until the "Create function" button appears at the bottom
+- Click the "Create function" button. An error message will appear.
+- Scroll down until the "Security" field appears
+- Set "Security" to "Open"
+- Scroll down until the "Create function" button appears at the bottom
+- Click the "Create function" button. A "Congratulations" message will appear.
+- Click the down arrow in the "Select a test event" field in the upper right corner. A popup menu will appear.
+- Select "Configure test events"
+- Set "Event name" to "MyDynamoDBEvent"
+- Set "body" in JSON definition of event to "{ \"TableName\": \"MonthlyRollup\", \"Item\": { \"dttmCreated\": { \"S\": \"2019-02-01 00:15:00\" }, \"nbrSvcr\": { \"S\": \"000001\" }, \"amtPrincipal\": { \"N\": \"11\" }, \"amtInterest\": { \"N\": \"12\" }, \"amtAdjustments\": { \"N\": \"13\" }, \"amtPayoffs\": { \"N\": \"14\" }, \"amtPriorPrincipal\": { \"N\": \"15\" } } }"
+- Click the "Create" button at the bottom
+- Click the "Test" button in the upper right corner
+- Verify that the "Execution result: succeeded" message appears on the left
+- Click the "Details" link on the left
+- Verify that "statusCode" is set to "200" in the JSON that appears
+- Click "Services" in the top left corner
+- Click "DynamoDB" under "Database"
+- Click the "Tables" link on the left
+- Click the "MonthlyRollup" link in the center
+- Click the "Items" tab on the right
+- Verify that a row appears reading "2019-02-01 00:15:00  13  12  14  11  15  000001"
+
+Test DynamoDB Lambda function from outside of AWS
+
+- Click "Services" in the top left corner
+- Click "Lambda" under "Compute"
+- Click the "myAPITriggeredDBWriterLambdaFunc" link in the center
+- Click the API Gateway button
+- Scroll down to the API Gateway information at the bottom
+- Right-click the "API endpoint" link at the bottom and select "Open link in new tab"
+- Verify that the following JSON appears in the new browser tab:
+  {"message": "Internal server error"}
+- Close the new browser tab
+- Right-click the "API endpoint" link at the bottom and select "Copy link address"
+- Start SoapUI
+- Click the "Skip" button in the "Stay Tuned!" dialog displayed by SoapUI
+- Switch to the SoapUI window
+- Paste the copied URL into the "Endpoint" field
+- Click the "Send" button
+- Verify that error code 502 and the following JSON appear in the "Response" field
+  {"message": "Internal server error"}
+- Set the "Method" field to "POST"
+- Click the "Send" button
+- Verify that error code 502 and the following JSON appear in the "Response" field
+  {"message": "Internal server error"}
+- Click the "Body" tab
+- Set the "Body" field to the following: { "TableName": "MonthlyRollup", "Item": { "dttmCreated": { "S": "2019-03-01 00:15:00" }, "nbrSvcr": { "S": "000002" }, "amtPrincipal": { "N": "21" }, "amtInterest": { "N": "22" }, "amtAdjustments": { "N": "23" }, "amtPayoffs": { "N": "24" }, "amtPriorPrincipal": { "N": "25" } } }
+- Click the "Send" button
+- Verify that error code 200 appears in the "Response" field
+- Switch to the AWS tab of the browser window
+- Click "Services" in the top left corner
+- Click "DynamoDB" under "Database"
+- Click the "Tables" link on the left
+- Click the "MonthlyRollup" link in the center
+- Click the "Items" tab on the right
+- Verify that a row appears reading "2019-03-01 00:15:00  23  22  24  21  25  000002"
+
+Log out of AWS
+
+- Click account name in the top right corner. A popup menu will appear.
+- Click "Sign Out"

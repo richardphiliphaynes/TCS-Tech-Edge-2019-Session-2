@@ -1,0 +1,389 @@
+Log into AWS
+
+- Copy URL in downloaded "credentials.csv" to clipboard
+- Paste URL into browser
+- Click the Enter key
+- Copy user name from downloaded "credentials.csv" to clipboard
+- Paste user name into "IAM user name" field in web page
+- Paste password into "Password" field in web page
+- Click "Sign In" button
+
+Create Hello, World Elastic Beanstalk application
+
+- Click "Services" in the top left corner
+- Click "Elastic Beanstalk" under "Compute"
+- Click the "Create New Application" link in the upper right corner
+- Set "Application Name" to "MyHelloWorldWebApp"
+- Click the "Create" button in the lower right corner
+- Click the "Create one now" link in the center
+- Verify that the "Web server environment" card is selected in the center
+- Click the "Select" button
+- Select "Preconfigured platform" to "Node.js"
+- Scroll down to the bottom
+- Click the "Create environment" button
+- Wait for Elastic Beanstalk Dashboard to appear
+- Verify that "Ok" is displayed for "Health" and that "Sample Application" is displayed for "Running Version"
+- Right-click the URL link near the top and select "Open link in new tab"
+- Verify that a web page colored green on the left with the text "Congratulations" appears in the new browser tab
+- Close the new browser tab
+
+Modify Hello, World Elastic Beanstalk application
+
+- Click the "MyHelloWorldWebApp" link in the upper left corner
+- Click the "Application versions" link on the left
+- Click the "Sample Application" link in the "Source" column of the displayed table. A new browser tab will appear.
+- Click the "Sample Applications" link in the upper left corner
+- Click the "nodejs-v1.zip" link
+- Close the new browser tab
+- Move the downloaded nodejs-v1.zip file to a preferred working folder
+- Right-click nodejs-v1.zip in Windows Explorer and select 7-Zip -> Extract to "nodejs-v1\"
+- Load file nodejs-v1\index.html extracted from nodejs-v1.zip into editor
+- Replace "Congratulations" with "Good Job"
+- Save the modified file
+- Exit the editor
+- Rename nodejs-v1 directory extracted from nodejs-v1.zip as nodejs-v2
+- Right-click nodejs-v2 in Windows Explorer and select 7-Zip -> Add to "nodejs-v2.zip"
+- Switch to the AWS tab of the browser window
+- Click the "Environments" link on the left
+- Click the "Myhelloworldwebapp-env" link in the green card
+- Click the "Upload and Deploy" button in the center. The "Upload and Deploy" dialog will appear.
+- Click the "Choose File" button. The "Open" dialog will appear.
+- Select the file nodejs-v2.zip and click the "Open" button. The "Open" dialog will disappear.
+- Click the "Deploy" button. The "Upload and Deploy" dialog will disappear.
+- Wait for the deployment attempt to fail
+- Verify that "Degraded" is displayed for "Health" and that "Sample Application-1" is displayed for "Running Version"
+- Click the "Causes" button
+- Click the "Logs" link on the left
+- Click the "Request Logs" button in the upper right corner. A popup menu will appear.
+- Select "Last 100 Lines". A line will appear in the table in the center.
+- Click the "Download" link in the new line in the table. A new browser tab will appear.
+- Notice the logged failure to find the file package.json.
+- Close the new browser tab
+- Switch to Windows Explorer
+- Double-click nodejs-v2 directory in Windows Explorer
+- Select all files and directories in nodejs-v2
+- Right-click selected files and select 7-Zip -> Add to "nodejs-v2.zip"
+- Move nodejs-v2.zip to parent directory
+- Switch to the AWS tab of the browser window
+- Click the "Dashboard" link on the left
+- Click the "Upload and Deploy" button in the center. The "Upload and Deploy" dialog will appear.
+- Click the "Choose File" button. The "Open" dialog will appear.
+- Select the file nodejs-v2.zip and click the "Open" button. The "Open" dialog will disappear.
+- Click the "Deploy" button. The "Upload and Deploy" dialog will disappear.
+- Wait for the deployment attempt to complete
+- Verify that "Ok" is displayed for "Health" and that "Sample Application-2" is displayed for "Running Version"
+- Right-click the URL link near the top and select "Open link in new tab"
+- Verify that a web page colored green on the left with the text "Good Job" appears in the new browser tab
+- Close the new browser tab
+
+Create DynamoDB Elastic Beanstalk application
+
+- Click the "All Applications" link on the left
+- Click the "Create New Application" link in the upper right corner
+- Set "Application Name" to "MyDynamoDBWebApp"
+- Click the "Create" button in the lower right corner
+- Click the "Create one now" link in the center
+- Verify that the "Web server environment" card is selected in the center
+- Click the "Select" button
+- Select "Preconfigured platform" to "Node.js"
+- Scroll down to the bottom
+- Click the "Create environment" button
+- Wait for Elastic Beanstalk Dashboard to appear
+- Verify that "Ok" is displayed for "Health" and that "Sample Application" is displayed for "Running Version"
+- Open Google in new browser tab
+- Search on terms "elastic beanstalk with dynamodb"
+- Click the link titled "Using Elastic Beanstalk with Amazon DynamoDB - AWS Elastic Beanstalk" (URL: docs.aws.amazon.com/elasticbeanstalk/latest/dg/AWSHowTo.dynamoDB.html)
+- Click the "eb-node-express-sample" link in the 3rd paragraph.
+- Close the Google tab
+- Click the "Clone or download" button on the right. A popup dialog will appear.
+- Click the "Download ZIP" button
+- Close the GitHub tab
+- Move the downloaded eb-node-express-sample-master.zip file to a preferred working folder
+- Switch to the AWS tab of the browser window
+- Click the "Upload and Deploy" button in the center. The "Upload and Deploy" dialog will appear.
+- Click the "Choose File" button. The "Open" dialog will appear.
+- Select the file eb-node-express-sample-master.zip and click the "Open" button. The "Open" dialog will disappear.
+- Click the "Deploy" button. The "Upload and Deploy" dialog will disappear.
+- Wait for the deployment attempt to fail
+- Verify that "Degraded" is displayed for "Health" and that "Sample Application-1" is displayed for "Running Version"
+- Click the "Causes" button
+- Click the "Logs" link on the left
+- Click the "Request Logs" button in the upper left corner. A popup menu will appear.
+- Select "Last 100 Lines". A line will appear in the table in the center.
+- Click the "Download" link in the new line in the table. A new browser tab will appear.
+- Notice the logged failure to find the file package.json.
+- Close the new browser tab
+- Switch to Windows Explorer
+- Right-click eb-node-express-sample-master.zip in Windows Explorer and select 7-Zip -> Extract to "eb-node-express-sample-master\"
+- Rename eb-node-express-sample-master directory extracted from eb-node-express-sample-master.zip as eb-node-express-monthly-rollup
+- Double-click eb-node-express-monthly-rollup directory in Windows Explorer
+- Select all files and directories in eb-node-express-monthly-rollup
+- Right-click selected files and select 7-Zip -> Add to "eb-node-express-monthly-rollup.zip"
+- Move eb-node-express-monthly-rollup.zip to parent directory
+- Switch to the AWS tab of the browser window
+- Click the "Dashboard" link on the left
+- Click the "Upload and Deploy" button in the center. The "Upload and Deploy" dialog will appear.
+- Click the "Choose File" button. The "Open" dialog will appear.
+- Select the file eb-node-express-monthly-rollup.zip and click the "Open" button. The "Open" dialog will disappear.
+- Click the "Deploy" button. The "Upload and Deploy" dialog will disappear.
+- Wait for the deployment attempt to complete
+- Verify that "Ok" is displayed for "Health" and that "Sample Application-2" is displayed for "Running Version"
+- Right-click the URL link near the top and select "Open link in new tab"
+- Verify that a web page with the text "The next big thing is coming" appears in the new browser tab
+- Click the "Sign up today" button. A popup dialog will appear.
+- Enter the name and email address fields
+- Click the "Sign Up!" button. The popup dialog will disappear.
+- Verify that the message displayed near the top reads, "Well this is embarrassing. It looks like we're having trouble getting you on the list."
+- Close the new browser tab
+- Click the "Logs" link on the left
+- Click the "Request Logs" button in the upper left corner. A popup menu will appear.
+- Select "Last 100 Lines". A line will appear in the table in the center.
+- Click the "Download" link in the new line in the table. A new browser tab will appear.
+- Notice the logged failure "DDB Error: AccessDeniedException: User: arn:aws:sts::555319665673:assumed-role/aws-elasticbeanstalk-ec2-role/i-039bbae5458bce76a is not authorized to perform: dynamodb:PutItem on resource: arn:aws:dynamodb:us-east-1:555319665673:table/awseb-e-mra29ccfpz-stack-StartupSignupsTable-1RKJAKKIXG2KJ"
+- Close the new browser tab
+
+Fix the new application's access issue
+
+- Click "Services" in the top left corner
+- Click "IAM" under "Security, Identity, & Compliance"
+- Click the "Policies" link on the left
+- Click the "Create policy" button near the top
+- Click the "Choose a service" link
+- Scroll down until the "DynamoDB" link becomes visible
+- Click the "DynamoDB" link
+- Check "All DynamoDB actions (dynamodb:*)
+- Click the Resources paragraph
+- Click the "Add ARN" link to the right of the "table" row header. The "Add ARN(S)" popup dialog will appear.
+- Set "Region" to "us-east-1"
+- Set "Table name" to "awseb-e-mra29ccfpz-stack-StartupSignupsTable-1RKJAKKIXG2KJ"
+- Click the "Add" button. The "Add ARN(S)" popup dialog should disappar.
+- Click the "Review policy" button in the lower right corner
+- Set "Name" to "ElasticBeanstalkTable"
+- Scroll down to the bottom
+- Click the "Create policy" button in the lower right corner
+- Click the "Roles" link on the left
+- Scroll down until the "aws-elasticbeanstalk-ec2-role" link is visible
+- Click the "aws-elasticbeanstalk-ec2-role" link
+- Click the "Attach policies" button
+- Set "Filter policies" to "ElasticBeanstalkTable"
+- Check the "ElasticBeanstalkTable" row
+- Click the "Attach policy" button
+- Scroll down to the bottom
+- Click the "Show 2 more" link
+- Verify that "ElasticBeanstalkTable" is among the policies listed
+- Click "Services" in the top left corner
+- Click "Elastic Beanstalk" under "Compute"
+- Click the "Mydynamodbwebapp-env" card in the center
+- Right-click the URL link near the top and select "Open link in new tab"
+- Verify that a web page with the text "The next big thing is coming" appears in the new browser tab
+- Click the "Sign up today" button. A popup dialog will appear.
+- Enter the name and email address fields
+- Click the "Sign Up!" button. The popup dialog will disappear.
+- Verify that the message displayed near the top reads, "Well this is embarrassing. It looks like we're having trouble getting you on the list."
+- Close the new browser tab
+- Click the "Logs" link on the left
+- Click the "Request Logs" button in the upper left corner. A popup menu will appear.
+- Select "Last 100 Lines". A line will appear in the table in the center.
+- Click the "Download" link in the new line in the table. A new browser tab will appear.
+- Notice the logged failure "SNS Error: AuthorizationError: User: arn:aws:sts::555319665673:assumed-role/aws-elasticbeanstalk-ec2-role/i-039bbae5458bce76a is not authorized to perform: SNS:Publish on resource: arn:aws:sns:us-east-1:555319665673:awseb-e-mra29ccfpz-stack-NewSignupTopic-1OVPB5I2NOCQT"
+- Close the new browser tab
+- Click "Services" in the top left corner
+- Click "DynamoDB" under "Database"
+- Click the "Tables" link on the left
+- Click the "awseb-e-mra29ccfpz-stack-StartupSignupsTable-1RKJAKKIXG2KJ" link in the center
+- Click the "Items" tab on the right
+- Verify that a row appears containing the name and email address entered in the application popup
+
+Modify DynamoDB Elastic Beanstalk application to modify MonthlyRollup table
+
+- Load file eb-node-express-monthly-rollup\app.js extracted from eb-node-express-sample-master.zip into editor
+- Replace the app.post() method call with the following:
+  app.post('/signup', function(req, res) {
+          var dateObj = new Date();
+          var yearStr = '000' + dateObj.getFullYear();
+          var monthStr = '0' + (dateObj.getMonth() + 1);
+          var dateStr = '0' + dateObj.getDate();
+          var hourStr = '0' + dateObj.getHours();
+          var minuteStr = '0' + dateObj.getMinutes();
+          var secondStr = '0' + dateObj.getSeconds();
+          var dateTimeStr =
+              yearStr.substr(yearStr.length - 4, yearStr.length) + '-' +
+              monthStr.substr(monthStr.length - 2, monthStr.length) + '-' +
+              dateStr.substr(dateStr.length - 2, dateStr.length) + ' ' +
+              hourStr.substr(hourStr.length - 2, hourStr.length) + ':' +
+              minuteStr.substr(minuteStr.length - 2, minuteStr.length) + ':' +
+              secondStr.substr(secondStr.length - 2, secondStr.length);
+          var item = {
+              'dttmCreated': {'S': dateTimeStr},
+              'nbrSvcr': {'S': req.body.servicer},
+              'amtPrincipal': {'N': req.body.principal},
+              'amtInterest': {'N': req.body.interest},
+              'amtAdjustments': {'N': req.body.adjustments},
+              'amtPayoffs': {'N': req.body.payoffs},
+              'amtPriorPrincipal': {'N': req.body.priorprincipal}
+          };
+
+          ddb.putItem({
+              'TableName': 'MonthlyRollup',
+              'Item': item,
+              'Expected': { dttmCreated: { Exists: false } }        
+          }, function(err, data) {
+              if (err) {
+                  var returnStatus = 500;
+
+                  if (err.code === 'ConditionalCheckFailedException') {
+                      returnStatus = 409;
+                  }
+
+                  res.status(returnStatus).end();
+                  console.log('DDB Error: ' + err);
+              } else {
+                  res.status(201).end();
+              }
+          });
+      });
+- Insert " 1" (without the quotes) after the word "Server" in the following statement at the end of app.js:
+  console.log('Server running at http://127.0.0.1:' + port + '/');
+- Save the modified file
+- Exit the editor
+- Load file eb-node-express-monthly-rollup\views\index.ejs extracted from eb-node-express-sample-master.zip into editor
+- Replace the outermost <div> element in the <body> element with the following:
+    <div class="container">
+      <div class="header">
+        <h3 class="text-muted">Freddie Mac</h3>
+      </div>
+	  <% if (flask_debug === 'true') { %>
+      <div class="alert alert-danger">
+      	Flask is in debug mode. This is not safe for production.
+      </div>
+      <% } %>
+      <div id="signupSuccess" class="alert alert-success" style="display:none">
+        <p id="signupSuccessText">Your entry was successfully added.</p>
+      </div>
+      <div id="signupError" class="alert alert-info" style="display:none">
+        <p id="signupErrorText">An error occurred attempting to add your entry to the database.</p>
+      </div>
+      <div class="jumbotron">
+        <h1>Cash Manager Portal...</h1>
+        <p><a class="btn btn-lg btn-success"  data-toggle="modal" href="#signupModal">Add monthly rollup</a></p>
+      </div>
+
+
+      <div class="footer">
+        <p>&copy; Freddia Mac 2013</p>
+      </div>
+      
+      <!-- Modal -->
+       <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModal" aria-hidden="true">
+         <div class="modal-dialog">
+           <div class="modal-content">
+             <div class="modal-header">
+               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+               <h4 class="modal-title">Monthly...</h4>
+             </div>
+             <div class="modal-body">
+               <form id="signupForm" role="form">
+                 <input type="hidden" id="theme" name="theme" value="<%= theme %>"/>
+                 <div class="form-group">
+                   <label for="name">Servicer</label>
+                   <input type="text" class="form-control" id="servicer" name="servicer" placeholder="6-digit servicer number">
+                 </div>
+                 <div class="form-group">
+                   <label for="principal">Principal</label>
+                   <input type="text" class="form-control" id="principal" name="principal" placeholder="Principal">
+                 </div>
+                 <div class="form-group">
+                   <label for="interest">Interest</label>
+                   <input type="text" class="form-control" id="interest" name="interest" placeholder="Interest">
+                 </div>
+                 <div class="form-group">
+                   <label for="adjustments">Adjustments</label>
+                   <input type="text" class="form-control" id="adjustments" name="adjustments" placeholder="Adjustments">
+                 </div>
+                 <div class="form-group">
+                   <label for="payoffs">Payoffs</label>
+                   <input type="text" class="form-control" id="payoffs" name="payoffs" placeholder="Payoffs">
+                 </div>
+                 <div class="form-group">
+                   <label for="priorprincipal">Prior Principal</label>
+                   <input type="text" class="form-control" id="priorprincipal" name="priorprincipal" placeholder="Prior Principal">
+                 </div>
+             </div>
+             <div class="modal-footer">
+               <button id="signup" type="button" class="btn btn-primary">Upload</button>
+             </div>
+           </div><!-- /.modal-content -->
+         </div><!-- /.modal-dialog -->
+       </div><!-- /.modal -->
+
+    </div> <!-- /container -->
+- Save the modified file
+- Exit the editor
+- Double-click eb-node-express-monthly-rollup directory in Windows Explorer
+- Select all files and directories in eb-node-express-monthly-rollup
+- Right-click selected files and select 7-Zip -> Add to "eb-node-express-monthly-rollup.zip"
+- Move eb-node-express-monthly-rollup.zip to parent directory
+- Switch to the AWS tab of the browser window
+- Click "Services" in the top left corner
+- Click "Elastic Beanstalk" under "Compute"
+- Click the "Mydynamodbwebapp-env" card in the center
+- Click the "Upload and Deploy" button in the center. The "Upload and Deploy" dialog will appear.
+- Click the "Choose File" button. The "Open" dialog will appear.
+- Select the file eb-node-express-monthly-rollup.zip and click the "Open" button. The "Open" dialog will disappear.
+- Click the "Deploy" button. The "Upload and Deploy" dialog will disappear.
+- Wait for the deployment attempt to complete
+- Verify that "Ok" is displayed for "Health" and that "Sample Application-3" is displayed for "Running Version"
+- Right-click the URL link near the top and select "Open link in new tab"
+- Verify that a web page with the text "Cash Manager Portal" appears in the new browser tab
+- Click the "Add monthly rollup" button. A popup dialog will appear.
+- Enter "000003", "31", "32", "33", "34", and "35" as "Servicer", "Principal", "Interest", "Adjustments", "Payoffs", and "Prior Principal" respectively
+- Click the "Upload" button. The popup dialog will disappear.
+- Verify that the message displayed near the top reads, "An error occurred attempting to add your entry to the database."
+- Close the new browser tab
+- Click the "Logs" link on the left
+- Click the "Request Logs" button in the upper left corner. A popup menu will appear.
+- Select "Last 100 Lines". A line will appear in the table in the center.
+- Click the "Download" link in the new line in the table. A new browser tab will appear.
+- Notice the logged informational message "Server 1 running at http://127.0.0.1:8081/"
+- Notice the logged failure "DDB Error: AccessDeniedException: User: arn:aws:sts::555319665673:assumed-role/aws-elasticbeanstalk-ec2-role/i-039bbae5458bce76a is not authorized to perform: dynamodb:PutItem on resource: arn:aws:dynamodb:us-east-1:555319665673:table/MonthlyRollup"
+- Close the new browser tab
+- Click "Services" in the top left corner
+- Click "IAM" under "Security, Identity, & Compliance"
+- Click the "Policies" link on the left
+- Set "Filter policies" to "ElasticBeanstalkTable"
+- Click the "ElasticBeanstalkTable" link
+- Click the "Edit policy" button
+- Click the "DynamoDB (All actions)" link
+- Click the "Resources" paragraph
+- Click the "EDIT" button in the "Resource" row
+- Change the part of the ARN following "table/" to "MonthlyRollup"
+- Click the "Save changes" button
+- Click the "Review policy" button in the lower right corner
+- Scroll down to the bottom
+- Click the "Save changes" button in the lower right corner
+- Click "Services" in the top left corner
+- Click "Elastic Beanstalk" under "Compute"
+- Click the "Mydynamodbwebapp-env" card in the center
+- Right-click the URL link near the top and select "Open link in new tab"
+- Verify that a web page with the text "Cash Manager Portal" appears in the new browser tab
+- Click the "Add monthly rollup" button. A popup dialog will appear.
+- Enter "000003", "31", "32", "33", "34", and "35" as "Servicer", "Principal", "Interest", "Adjustments", "Payoffs", and "Prior Principal" respectively
+- Click the "Upload" button. The popup dialog will disappear.
+- Verify that the message displayed near the top reads, "Your entry was successfully added."
+- Click the "Add monthly rollup" button. A popup dialog will appear.
+- Enter "000004", "41", "42", "43", "44", and "45" as "Servicer", "Principal", "Interest", "Adjustments", "Payoffs", and "Prior Principal" respectively
+- Click the "Upload" button. The popup dialog will disappear.
+- Verify that the message displayed near the top reads, "Your entry was successfully added."
+- Close the new browser tab
+- Click "Services" in the top left corner
+- Click "DynamoDB" under "Database"
+- Click the "Tables" link on the left
+- Click the "MonthlyRollup" link in the center
+- Click the "Items" tab on the right
+- Verify that a row appears beginning with a date-time stamp and ending with "33  32  34  31  35  000003"
+- Verify that a row appears beginning with a date-time stamp and ending with "43  42  44  41  45  000004"
+
+Log out of AWS
+
+- Click account name in the top right corner. A popup menu will appear.
+- Click "Sign Out"

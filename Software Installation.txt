@@ -1,0 +1,31 @@
+Install free version of Smartbear SoapUI
+
+- Browse to soapui.org
+- Scroll down until "Open Source" and "Professional" buttons appear on the left and right respectively
+- Click the "Open Source" button
+- Click the "Download SoapUI Open Source" button on the right
+- Launch the downloaded installer
+- Select all of the defaults while running the installer
+- Choose not to start SoapUI upon termination of the installer
+- Exit installer
+- Close browser tab used to download SoapUI
+
+Install 7-zip
+
+- Browse to 7-zip.org
+- Click the "Download" link for the Windows 64-bit x64 type in the top table
+- Launch the downloaded installer
+- Select all of the defaults while running the installer
+- Exit installer
+- Close browser tab used to download 7-Zip
+
+Install PuTTY
+
+- Browse to https://www.chiark.greenend.org.uk/~sgtatham/putty/
+- Click the "Download it here" link near the top of the page
+- Click the link for the 64-bit Windows .msi file
+- Launch the downloaded installer
+- Select all of the defaults while running the installer
+- Exit installer
+- Close README file
+- Close browser tab used to download PuTTY
